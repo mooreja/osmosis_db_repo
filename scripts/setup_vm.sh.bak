@@ -1,0 +1,36 @@
+#!/bin/bash
+# exit if anything returns failure
+set -e
+
+# install curl
+#apt-get install curl -y
+
+# install rvm 
+#curl -L https://get.rvm.io | bash -s stable
+
+# activate the correct rvm environment
+source /usr/local/rvm/scripts/rvm
+
+# get latest rvm
+#rvm get stable
+
+# install ruby
+#rvm list known
+#rvm install ruby-2.0.0-p353
+#rvm --default use 2.0.0-p353
+ruby -v # will show which version is being used
+
+# install git
+#apt-get install -y git
+
+cd /opt
+if [ -d osmosis_db_repo ];
+then
+cd osmosis_db_repo
+else
+git clone https://github.com/mooreja/osmosis_db_repo.git
+cd osmosis_db_repo
+fi
+bundle install
+berks install
+cd ..

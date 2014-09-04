@@ -1,0 +1,12 @@
+{
+  "name": "osmosis_database",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "OSMOSIS PostGIS Database",
+  "run_list": [
+    "role[osmosis_base]",
+    "recipe[osmosis::networking]",
+    "recipe[osmosis::postgresql]",
+    "recipe[osmosis::database]"
+  ]
+}
